@@ -1,0 +1,2539 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #1A1A1A;
+    background: #F9FAFB;
+    user-select: none;
+    -webkit-user-select: none;
+    /* Safari/Chrome */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE/Edge */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: antialiased;
+}
+
+section {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+    /* ayuda rendimiento */
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+ins {
+    background: linear-gradient(135deg,
+            #A7D4FF,
+            /* azul muy claro (brillo) */
+            #8EC5FC,
+            /* azul cielo */
+            #5EA3E6,
+            /* tu azul base */
+            #3F8FD9,
+            /* azul profundo */
+            #2F78C4
+            /* azul intenso final */
+        );
+    color: inherit;
+    padding: 0 0.18em;
+    border-radius: 4px;
+    text-decoration: none;
+    box-decoration-break: clone;
+}
+
+
+/* BARRA NEGRA PEGADA ARRIBA */
+header.barraNegra {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    background-color: #000;
+    /* barra negra */
+    margin-top: 0 !important;
+    padding: 0.5rem 0;
+    animation: fadeInDown 0.8s ease forwards;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Alinea el contenido centrado horizontalmente */
+.navCentro {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Logo centrado */
+.logoFlova {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoFlova img {
+    height: 2.2rem;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.logoFlova img:hover {
+    transform: scale(1.1);
+}
+
+/* Contenedor del nav general */
+.contenedorNav {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Estructura tipo píldora eliminada */
+.navegador {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+/* Oculta el header cuando se hace scroll hacia abajo */
+.headerOculto {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* ==== MENÚ HAMBURGUESA ==== */
+.menu-toggle {
+    position: absolute;
+    right: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    z-index: 10000;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Cambiar a X cuando está activo */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ==== OVERLAY DEL MENÚ ==== */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.7);
+    /* semitransparente */
+    backdrop-filter: blur(8px);
+    /* borroso */
+    -webkit-backdrop-filter: blur(8px);
+    /* compatibilidad Safari */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 9998;
+}
+
+/* Mostrar menú */
+.menu-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==== OPCIONES DEL MENÚ ==== */
+.menu-desplegado ul {
+    list-style: none;
+    text-align: center;
+}
+
+.menu-desplegado li {
+    margin: 0rem 0;
+}
+
+.menu-desplegado a {
+    color: #fff;
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    letter-spacing: -2px;
+}
+
+.menu-desplegado a:hover {
+    color: #005ad6;
+}
+
+.menu-desplegado a:active {
+    color: #0070f3;
+}
+
+/* Sección Héroe */
+#flova {
+    text-align: center;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+    background: #F9FAFB;
+}
+
+.contenedorTitulo {
+    margin-top: 5rem;
+    padding-left: 0.5rem;
+    /* Reduce espacio izquierdo */
+    padding-right: 0.5rem;
+    /* Reduce espacio derecho */
+    margin-left: auto;
+    /* Centra el contenedor horizontalmente */
+    margin-right: auto;
+    max-width: 75%;
+    /* Limita el ancho máximo para que no ocupe todo */
+}
+
+
+.contenedorTitulo h2 {
+    font-size: 5.375 rem !important;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.09em;
+    line-height: 1;
+    font-weight: bold;
+    /* o 700 según lo que uses */
+}
+
+.contenedorTitulo h2 .noNegrita {
+    font-weight: normal;
+}
+
+.contenedorTitulo h1 {
+    font-size: 7.5rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.09em;
+    line-height: 1;
+    color: #000;
+    font-weight: bold;
+    /* o 700 según lo que uses */
+}
+
+.contenedorTitulo p {
+    font-size: 1.7rem;
+    max-width: 600px;
+    margin: 0 auto 1rem;
+    color: #3d3d3d;
+    line-height: 1.4;
+    /* Reduce el espacio entre líneas (1 es igual al tamaño de fuente) */
+    max-width: 70%;
+    /* Limita el ancho máximo para que no ocupe todo */
+}
+
+.contenedorTitulo a {
+    font-size: 0.85rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: #424242;
+    line-height: 1.5;
+    /* Reduce el espacio entre líneas (1 es igual al tamaño de fuente) */
+    max-width: 70%;
+    /* Limita el ancho máximo para que no ocupe todo */
+}
+
+/*responsive ingresa correo*/
+.formCorreo {
+    display: flex;
+    align-items: center;
+    max-width: 81%;
+    margin: 0 auto;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.formCorreo input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    font-size: 1.3rem;
+    outline: none;
+    min-width: 0;
+    /* importante para que no rompa el flex */
+    background-color: transparent;
+}
+
+.formCorreo input:hover {
+    background: #e3e4e6;
+    transition: .3s ease;
+}
+
+.formCorreo button {
+    padding: 0.75rem 1.2rem;
+    background-color: #007bff;
+    color: #000;
+    font-size: 1.3rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    /* evita que el texto se corte o baje */
+    flex-shrink: 0;
+    /* evita que el botón se achique */
+    font-weight: bold;
+}
+
+
+.formCorreo button:hover {
+    background: #005bb5;
+    /* tono más oscuro del azul original */
+    transition: background .3s ease;
+}
+
+
+/* Imagen hero */
+.contenedorImagen {
+    margin-top: 5rem;
+}
+
+.contenedorImagen img {
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+/* Main sections */
+main section {
+    padding: 4rem 1rem;
+}
+
+main section h3 {
+    color: #0070f3;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+
+/*contenedorEmprendedor*/
+/* Sección completa con fondo claro y padding */
+.queridoEmprendedor {
+    background-color: #f9fafb;
+    /* Color de fondo suave */
+    padding: 12rem 1rem;
+    /* Espaciado vertical y horizontal */
+    padding-bottom: 0.5rem;
+    display: flex;
+    /* Flexbox para centrar */
+    justify-content: center;
+    /* Centrado horizontal */
+}
+
+/* Contenedor del contenido */
+.contenedorEmprendedor {
+    max-width: 50rem;
+    /* Limita el ancho del texto */
+    width: 100%;
+    /* Ocupa todo el ancho disponible */
+    text-align: justify;
+    /* Justifica el texto (bordes alineados) */
+}
+
+/* Encabezado */
+.contenedorEmprendedor h2 {
+    text-align: center;
+    /* Centra solo el título */
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #005bb5;
+}
+
+/* Párrafos */
+.contenedorEmprendedor p {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.7;
+    /* Espacio entre líneas */
+    margin-bottom: 1.5rem;
+    color: #000;
+    text-align: left;
+}
+
+.contenedorEmprendedor p b {
+    font-weight: 600;
+}
+
+/* --- ESTILOS PARA PC --- */
+.contenedorEmprendedor ul {
+    list-style-type: disc !important;
+    /* Fuerza las viñetas */
+    list-style-position: outside !important;
+    /* Viñetas a la izquierda */
+    padding-left: 2.5rem;
+    /* 💻 Más espacio para pantallas grandes */
+    line-height: 1.4;
+    /* Más separación entre líneas */
+}
+
+.contenedorEmprendedor li {
+    position: relative;
+    margin-bottom: 1rem;
+    /* 💻 Espacio más generoso entre elementos */
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+/* 🌟 Pseudo-elemento personalizado para PC */
+.contenedorEmprendedor li::before {
+    content: "•";
+    color: #005ad6;
+    /* Azul brillante */
+    font-size: 5rem;
+    /* 💻 Aumenta el tamaño de la viñeta */
+    position: absolute;
+    left: -2rem;
+    /* Ajusta la posición horizontal */
+    top: -2.4rem;
+    /* Ajusta la posición vertical */
+}
+
+/* Quita el marcador nativo (por si acaso) */
+.contenedorEmprendedor li::marker {
+    content: none;
+}
+
+/* Botones */
+.contenedorEmprendedor button {
+    display: inline-block;
+    justify-content: center;
+    margin: 1rem 0.5rem 0 0;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.contenedorEmprendedor button:hover {
+    background-color: white;
+    /* Fondo blanco al pasar el mouse */
+    color: #0070f3;
+    /* Texto azul */
+    border: 2px solid #0070f3;
+    /* Borde azul */
+}
+
+.contenedorEmprendedor button i {
+    margin-left: 0.5rem;
+    /* Espacio entre el ícono y el texto */
+    vertical-align: middle;
+    /* Alineación vertical con el texto */
+}
+
+/* Boton CTA 1 */
+
+#agenda {
+    padding: 1rem;
+    padding-bottom: 4rem;
+}
+
+.botonAgenda {
+    text-align: center;
+    margin-top: 0rem;
+    background: #F9FAFB;
+    width: auto;
+    display: flex;
+}
+
+.botonAgenda button {
+    background: #005ad6;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem 1rem;
+    padding-top: 1.5rem;
+    font-size: 2.2rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: auto;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background 0.2s, transform 0.2s;
+    margin: 0 auto;
+}
+
+
+.botonAgenda button:hover {
+    background: #0070f3;
+    transform: translateY(-0.1px) scale(1.01);
+    transition: background .3s ease transform 0.3s;
+}
+
+.botonAgenda button strong {
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#agenda p {
+    display: block;
+    font-size: 1.5rem;
+    color: #666666;
+    /* Subrayado */
+    text-align: center;
+    /* Centrado */
+    max-width: 70%;
+    /* Igual que el botón */
+    margin: 0.5rem auto 0 auto;
+    /* Separación desde el botón + centrado */
+}
+
+
+/* Servicios */
+
+#servicios {
+    text-align: center;
+    padding-bottom: 1rem;
+    background: #F9FAFB;
+}
+
+#servicios h3 i {
+    margin-right: 0.5rem;
+    /* Espacio entre el ícono y el texto */
+    vertical-align: middle;
+    /* Alineación vertical con el texto */
+}
+
+/*contenedor servicios, titulo*/
+.contenedorServicios {
+    padding-left: 3rem;
+    /* Reduce espacio izquierdo */
+    padding-right: 3rem;
+    /* Reduce espacio derecho */
+    margin-left: auto;
+    /* Centra el contenedor horizontalmente */
+    margin-right: auto;
+    max-width: 80%;
+    /* Limita el ancho máximo para que no ocupe todo */
+}
+
+.contenedorServicios h2 {
+    color: #000;
+    font-size: 7.5rem;
+    /* Tamaño de la letra */
+    margin-bottom: 0.4rem;
+    /* Espacio debajo del título */
+    letter-spacing: -0.07em;
+    /* Reduce espacio entre letras, puedes ajustar el valor */
+    line-height: 1;
+    /* Reduce el espacio entre líneas (1 es igual al tamaño de fuente) */
+}
+
+.contenedorServicios p {
+    font-size: 1.3rem;
+    max-width: 600px;
+    margin: 0 auto 1rem;
+    color: #3d3d3d;
+    line-height: 1.4;
+    /* Reduce el espacio entre líneas (1 es igual al tamaño de fuente) */
+    max-width: 85%;
+    /* Limita el ancho máximo para que no ocupe todo */
+    text-align: left;
+}
+
+/* Servicios – grid 2x2 */
+.contenedorTablaServicios {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    /* Fijo 2 columnas iguales */
+    max-width: 90%;
+    /* Limita el ancho máximo total del contenedor */
+    margin: auto;
+    /* Centra horizontalmente el contenedor dentro de su padre */
+    margin-top: -29rem;
+    /* Ajusta este valor según necesites */
+    position: relative;
+    z-index: 8;
+}
+
+.contenedorTablaServicios div {
+    text-align: left;
+    color: #555;
+    background: #FFF;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    line-height: 1;
+}
+
+.contenedorTablaServicios h3 {
+    font-size: 2rem !important;
+    /* Forzar el tamaño */
+    font-weight: 900 !important;
+    /* Forzar el grosor máximo */
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    line-height: 1.1;
+    text-align: center !important;
+    display: block;
+    width: 100%;
+}
+
+/*ajuste a las tarjetas de servicio*/
+.seccion-crecimiento-negro {
+    position: relative;
+    background: #000;
+    padding-bottom: 30rem;
+    /* espacio para que quepan las cards */
+    clip-path: polygon(0 0,
+            100% 0,
+            100% 90%,
+            0 100%);
+}
+
+.servicios-cards-wrapper {
+    background: #F9FAFB;
+    position: relative;
+    z-index: 3;
+    margin-top: 5rem;
+}
+
+.tarjeta-servicio h3 {
+    color: #2563eb;
+    /* azul */
+}
+
+
+/* Ajuste responsive: en pantallas pequeñas reduce un poco el tamaño */
+@media (max-width: 750px) {
+    .tarjeta-servicio h3 {
+        font-size: 1.6rem;
+    }
+}
+
+.contenedorTablaServicios h3 i {
+    margin-right: 0.5rem;
+    /* Espacio entre el ícono y el texto */
+    vertical-align: middle;
+    /* Alineación vertical con el texto */
+}
+
+/* Quitar efecto hover azul y cambio de color */
+/*.contenedorTablaServicios div:hover {
+    background: #FFF !important;
+    color: #555 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+    cursor: default;
+    transition: background .3s ease;
+}*/
+
+/*.contenedorTablaServicios div:hover h3 {
+    color: #424242 !important;
+    transition: background .3s ease;
+}*/
+
+.contenedorTablaBotones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    /* Centra los elementos hijos horizontalmente */
+    margin: 2rem auto;
+    /* Centra el contenedor en la pantalla horizontalmente */
+    max-width: 70%;
+    /* Igual que contenedorTablaServicios */
+    margin-top: 3rem;
+}
+
+
+.contenedorTablaBotones div {
+    font-weight: 550;
+    color: #1A1A1A;
+    padding: .5rem 1rem;
+    background: #fff;
+    border-radius: 1rem;
+    cursor: default;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background .2s;
+}
+
+.contenedorTablaBotones div:hover {
+    background: #CCC;
+    cursor: default;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background .3s ease;
+}
+
+.contenedorTablaBotones div i {
+    margin-right: 0.5rem;
+    /* Espacio entre el ícono y el texto */
+    vertical-align: middle;
+    /* Alineación vertical con el texto */
+}
+
+/* Llamada a la acción */
+.contenedorLlamada {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.contenedorLlamada button {
+    font-size: 1.3rem;
+    padding: .75rem 2rem;
+    background: #0070f3;
+    color: #FFF;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.contenedorLlamada button:hover {
+    border: 2px solid #0070f3;
+    background: #fff;
+    color: #0070f3;
+}
+
+.contenedorLamada button i {
+    margin-left: 1rem;
+    /* Espacio entre el ícono y el texto */
+    vertical-align: middle;
+    /* Alineación vertical con el texto */
+}
+
+/*NUESTRO TRABAJO*/
+.contenedorTrabajo h2 {
+    font-size: 5.4rem;
+    /* Tamaño de la letra */
+    margin-bottom: 0.4rem;
+    /* Espacio debajo del título */
+    letter-spacing: -0.07em;
+    /* Reduce espacio entre letras, puedes ajustar el valor */
+    line-height: 1;
+    /* Reduce el espacio entre líneas (1 es igual al tamaño de fuente) */
+    text-align: center;
+    font-weight: bold;
+    max-width: 75%;
+    margin: 0 auto 0.4rem auto;
+    color: #000;
+
+}
+
+.contenedorTrabajo p {
+    font-size: 2.3rem;
+    text-align: left;
+}
+
+/* Testimonios */
+
+/* Testimonios - Efecto Cascada */
+.testimonials-wrapper {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 70%;
+    margin: 2rem auto;
+}
+
+.testimonial-column {
+    width: 100%;
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+
+    /* Máscara para el desvanecido arriba y abajo */
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+
+.testimonial-scroller {
+    position: absolute;
+    width: 100%;
+    transition: transform 0.5s ease;
+}
+
+.testimonial {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-weight: 300;
+}
+
+.user {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #005ad6;
+    font-size: 1.2rem;
+}
+
+.handle {
+    color: #657786;
+    font-size: 1.1rem;
+}
+
+.content {
+    margin-top: 10px;
+    line-height: 1.2;
+    font-size: 1.2rem;
+}
+
+
+/* Preguntas frecuentes */
+#preguntasFrecuentes {
+    text-align: center;
+    padding-top: 8rem;
+    padding-bottom: 1rem;
+    background: #F9FAFB;
+}
+
+/*botones con funcion script*/
+.contenedorModular {
+    display: grid;
+    gap: 1rem;
+    max-width: 65%;
+    margin: 2rem auto 0;
+}
+
+/* Botón */
+.btn-read-more {
+    display: flex;
+    justify-content: left;
+    font-size: 1.5rem;
+    align-items: center;
+    background: #E0E0E0;
+    color: #000;
+    padding: 1rem 2.5rem;
+    padding-right: 5rem;
+    line-height: 1.3;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border: none;
+    text-align: left;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.btn-read-more b {
+    display: block;
+    /* Hace que el texto ocupe toda la línea */
+}
+
+/* Ícono gris con animación */
+.toggle-icon {
+    font-size: 1.5rem;
+    color: #1A1A1A;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    position: absolute;
+    right: 2rem;
+    /* Posición desde la derecha del botón */
+    top: 50%;
+    /* Centrado vertical */
+    transform: translateY(-50%);
+    /* Ajuste fino para centrar */
+    margin-left: 0;
+    /* Elimina el margen izquierdo anterior */
+}
+
+.btn-read-more.active .toggle-icon {
+    color: #667;
+    /* Gris más oscuro cuando está activo */
+    transform: rotate(180deg) scale(1.1);
+}
+
+
+/* Animación suave al cambiar */
+.fa-plus,
+.fa-minus {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.2s ease;
+}
+
+.modal-container.show~.btn-read-more .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Hover */
+.btn-read-more:hover {
+    background: #FFF;
+    color: #1A1A1A;
+    transition: background 0.3s ease;
+}
+
+/* Modal oculto (por defecto) */
+.modal-container {
+    display: none;
+    background: #E0E0E0;
+    color: #3d3d3d;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    width: 100%;
+    /* Igual al botón */
+    max-width: 100%;
+    /* No excede el ancho del contenedor padre */
+    animation: fadeIn 0.2s ease-in-out;
+    box-sizing: border-box;
+    /* Evita que el padding aumente el tamaño */
+}
+
+
+.modal-container:hover {
+    background: #fff;
+    color: #1A1A1A;
+    transition: background .2s;
+}
+
+/* Modal visible */
+.modal-container.show {
+    display: block;
+}
+
+/* Contenido del modal */
+.modal {
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 60vh;
+    /* máximo 60% del alto visible */
+    overflow-y: auto;
+    /* scroll si el contenido excede */
+    border-radius: 0.5rem;
+    font-size: 1.3rem;
+    text-align: left;
+}
+
+.modal ul {
+    list-style-type: disc;
+    padding-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.modal li {
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+.modal li::marker {
+    color: #1A1A1A;
+    /* azul moderno */
+    font-size: 1.2rem;
+}
+
+
+/* Animación */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/*Planes y servicios*/
+/* Contenedor principal de la sección */
+.contenedorPlanes {
+    position: relative;
+    /* necesario para posicionar el overlay */
+    background-image: url('cta.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 1rem;
+    max-width: 70%;
+    margin: 2rem auto;
+    padding: 2rem 4rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Capa oscura encima del fondo gif */
+.overlayPlanes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* opacidad ajustable */
+    z-index: 1;
+    border-radius: 1rem;
+}
+
+/* Contenido encima del overlay */
+.contenidoPlanes {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    /* cambia de fila a columna */
+    align-items: center;
+    /* centra horizontalmente */
+    text-align: center;
+    /* centra el texto */
+    gap: 1rem;
+    width: 100%;
+}
+
+/* Aviso promocional */
+.contenedorPromo {
+    background-color: rgba(255, 254, 254, 0.2);
+    color: #fff;
+    padding: 0.4rem 1rem 0.4rem 2rem;
+    /* agrega espacio a la izquierda para el puntito */
+    text-align: center;
+    border-radius: 1rem;
+    font-size: 1rem;
+    font-weight: 550;
+    width: fit-content;
+    margin-left: 0;
+    position: relative;
+    /* necesario para posicionar el ::before */
+}
+
+.contenedorPromo::before {
+    content: '';
+    position: absolute;
+    left: 0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.8rem;
+    height: 0.8rem;
+    background-color: #ff3c00;
+    /* verde brillante */
+    border-radius: 50%;
+    box-shadow: 0 0 8px 2px #ff3c00;
+    /* brillo */
+}
+
+
+
+/* Título y descripción */
+.contenedorPlanesTitulo h3 {
+    font-size: 2.2rem;
+    color: #FFF;
+    margin-bottom: 0rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.1rem;
+    text-align: center;
+    padding: 0rem 2rem;
+    /* ahora alineado a la izquierda */
+}
+
+.contenedorPlanesTitulo p {
+    font-size: 1rem;
+    margin-bottom: 0rem;
+    font-weight: 550;
+    text-align: center;
+    /* ahora alineado a la izquierda */
+    color: #CCC;
+}
+
+.grupoBotones {
+    margin-top: 0rem;
+    /* reduce espacio arriba */
+}
+
+/* Botones */
+.contenedorPlanBoton {
+    display: inline-block;
+    justify-content: center;
+    margin: 0.5rem 0.5rem 0 0;
+    padding: 0.5rem 6rem;
+    font-size: 2rem;
+    font-weight: 500;
+    background-color: #005bb5;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.contenedorPlanBoton:hover {
+    background: #0070f3;
+    /* tono más oscuro del azul original */
+    transition: background 0.3s ease;
+}
+
+
+
+/* Footer */
+/* Footer Styles */
+.cierrePagina {
+    background: #000;
+    color: #ccc;
+    padding: 5rem 1rem;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+}
+
+.footer-container {
+    max-width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    justify-content: space-between;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 1 1 300px;
+}
+
+.logo {
+    max-width: 150px;
+    height: auto;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons i {
+    font-size: 1.5rem;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.social-icons i:hover {
+    color: #0070f3;
+}
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.language-selector img {
+    width: 24px;
+    height: auto;
+}
+
+.language-selector select {
+    background: transparent;
+    color: #ccc;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+}
+
+.footer-column h4 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 0rem;
+    line-height: 1;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+}
+
+.footer-column li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-column a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #0070f3;
+}
+
+.call-to-action p {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.call-to-action span {
+    margin-top: -2.5rem;
+    margin-bottom: -1rem;
+}
+
+.cta-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.cta-form input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background: #222;
+    color: #fff;
+}
+
+.cta-form button {
+    padding: 0.5rem 1rem;
+    background: #0070f3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.cta-form button:hover {
+    background: #005bb5;
+}
+
+.footer-bottom {
+    margin-top: 3rem;
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #FFFF;
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.footer-bottom a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+    color: #0070f3;
+}
+
+/*css para texto de emprendedor*/
+.contenedorTextoEmprendedor {
+    max-width: 50rem;
+    margin: 0 auto;
+    width: 100%;
+    text-align: justify;
+}
+
+.contenedorTextoEmprendedor p {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: left;
+
+
+    color: #000;
+}
+
+/*css para el video*/
+.videoIntermedio {
+    max-width: 80%;
+    margin: 8rem auto 15rem;
+    border-radius: 45px;
+    overflow: hidden;
+}
+
+.videoIntermedio video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 45px;
+}
+
+/* TITULOS NUEVOS */
+.contenedorTituloSeccion {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contenedorTituloSeccion h2 {
+    font-size: 5.4rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.07em;
+    line-height: 1;
+    font-weight: bold;
+    color: #000;
+}
+
+.contenedorTituloSeccion h2 .noNegrita {
+    font-weight: normal;
+}
+
+/* Contenedor de la imagen */
+.contenedorEmoji {
+    display: flex;
+    justify-content: center;
+    /* centra horizontalmente */
+    align-items: center;
+    /* centra verticalmente si hay altura */
+    padding: 0;
+    /* elimina espacio interno */
+    padding-top: 5rem;
+    margin-bottom: -1rem;
+    /* elimina espacio externo */
+}
+
+/* Imagen billete */
+.contenedorEmoji img {
+    width: 100%;
+    /* ocupa todo el ancho disponible del contenedor */
+    max-width: 20%;
+    /* limita el ancho máximo para no saturar */
+    height: auto;
+    /* mantiene la proporción */
+    display: block;
+    /* elimina espacio debajo de la imagen */
+    margin: 0 auto;
+    /* centra en el contenedor */
+    border-radius: 8px;
+    /* opcional: esquinas redondeadas */
+}
+
+
+/* =======================
+   RESPONSIVE TABLETAS Y MÓVILES
+   ======================= */
+
+/* Ajuste responsive para títulos de servicios */
+@media (max-width: 1024px) {
+    .contenedorTablaServicios h3 {
+        font-size: 2.5rem !important;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 750px) {
+    .contenedorTablaServicios h3 {
+        font-size: 2rem !important;
+        margin-bottom: 0.75rem;
+    }
+}
+
+/* Tabletas: hasta 1024px */
+@media (min-width: 751px) and (max-width: 1024px) {
+
+    /*header*/
+    header,
+    .contenedorNav {
+        margin-bottom: 0;
+    }
+
+    #menuToggle {
+        font-size: 1rem;
+    }
+
+    .logoFlova img {
+        height: 1.7rem;
+    }
+
+    .menuDesplegable li a {
+        font-size: 0.8rem;
+    }
+
+    .menu-desplegado a {
+        font-size: 3rem;
+        /* texto un poco más pequeño */
+    }
+
+    .menu-toggle {
+        width: 22px;
+        height: 16px;
+    }
+
+    .menu-toggle .bar {
+        height: 2.5px;
+    }
+
+    .menu-desplegado {
+        transform: translateY(-10%);
+        /* sube 10% desde su posición centrada */
+    }
+
+    /*section general*/
+    section h3 {
+        font-size: 1.1rem;
+    }
+
+    /*section Flova */
+    .contenedorTitulo {
+        max-width: 80%;
+    }
+
+    .contenedorTitulo h1 {
+        font-size: 4.3rem;
+    }
+
+    .contenedorTitulo p {
+        font-size: 1.5rem;
+        max-width: 80%;
+    }
+
+    .contenedorTitulo form {
+        max-width: 70%;
+    }
+
+    .formCorreo {
+        display: flex;
+        align-items: center;
+        max-width: 60%;
+        margin: 1.5rem auto;
+        border-radius: 50px;
+        overflow: hidden;
+        box-shadow:
+            0 6px 12px rgba(0, 0, 0, 0.25),
+            0 45px 100px -25px rgba(0, 0, 0, 0.9);
+        width: 100%;
+        margin-bottom: 2rem;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+
+    .formCorreo input,
+    .formCorreo button {
+        font-size: 0.95rem;
+        padding: 0.7rem 1rem;
+    }
+
+    .contenedorImagen img {
+        max-width: 75%;
+        border-radius: 8px;
+    }
+
+    main section {
+        padding: 3rem 1rem;
+    }
+
+    /*section queridoEmprendedor*/
+    .contenedorEmprendedor {
+        max-width: 80%;
+    }
+
+    .contenedorEmprendedor p {
+        font-size: 1.5rem;
+        line-height: 1.4;
+    }
+
+    .contenedorEmprendedor ul {
+        list-style-type: disc !important;
+        /* Fuerza que aparezcan */
+        list-style-position: outside !important;
+        /* Que se muestren a la izquierda */
+        padding-left: 1.5rem;
+        /* Espacio para el punto */
+        line-height: 1.2;
+        font-size: 1.5rem;
+    }
+
+    .contenedorEmprendedor li {
+        position: relative;
+        margin-bottom: 0.6rem;
+    }
+
+    /* 🌟 Pseudo-elemento personalizado para asegurar el color */
+    .contenedorEmprendedor li::before {
+        content: "•";
+        /* Crea manualmente la viñeta */
+        color: #005ad6;
+        /* Azul brillante */
+        font-size: 3.5rem;
+        position: absolute;
+        left: -1.6rem;
+        top: -1rem;
+    }
+
+
+    /*section agenda*/
+    #agenda {
+        max-width: 800%;
+        margin: 0rem auto;
+        /* Centra horizontalmente el bloque */
+        display: flex;
+        flex-direction: column;
+        /* Para que el contenido se apile verticalmente */
+        align-items: center;
+        /* Centra horizontalmente el contenido interno */
+        /*text-align: center;  Alinea el texto al centro */
+        padding: 0rem 3rem;
+        padding-bottom: 2rem;
+    }
+
+    #agenda .botonAgenda button strong {
+        font-size: 1.7rem;
+        line-height: 1;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    #agenda p {
+        font-size: 1.1rem;
+    }
+
+    .botonAgenda button,
+    .botonAgenda button strong {
+        font-size: 1.2rem;
+    }
+
+    /*section servicios*/
+    .contenedorServicios {
+        max-width: 90%;
+    }
+
+    .contenedorServicios h2 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+    }
+
+    .contenedorServicios p {
+        font-size: 1.5rem;
+        max-width: 100%;
+    }
+
+    .contenedorTablaServicios {
+        grid-template-columns: 1fr;
+        /*grid-template-columns:  1fr;*/
+        /* 2 columna */
+        max-width: 80%;
+    }
+
+    .contenedorTablaServicios h3 {
+        font-size: 1.5rem;
+    }
+
+    .contenedorTablaServicios p {
+        font-size: 1.2rem;
+    }
+
+    .contenedorTablaBotones {
+        font-size: 1.2rem;
+    }
+
+    /*video*/
+    .videoIntermedio {
+        max-width: 90%;
+    }
+
+    /*section nuestroTrabajo*/
+
+    .contenedorTrabajo h2 {
+        max-width: 80%;
+        font-size: 3.8rem;
+        /* Tamaño del texto */
+        margin-bottom: 1rem;
+    }
+
+    .contenedorTextoEmprendedor {
+        max-width: 80%;
+    }
+
+    .contenedorTextoEmprendedor p {
+        font-size: 1.5rem;
+        line-height: 1.4;
+    }
+
+    /*Preguntas frecuentes*/
+    #preguntasFrecuentes {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .contenedorModular {
+        max-width: 80%;
+        gap: 1rem;
+        margin: 2rem auto;
+    }
+
+    .btn-read-more {
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        padding-right: 4rem;
+        border-radius: 0.6rem;
+    }
+
+    .toggle-icon {
+        font-size: 1.2rem;
+        right: 1.8rem;
+    }
+
+    .modal {
+        font-size: 1.1rem;
+        line-height: 1.3;
+    }
+
+    .modal ul {
+        list-style-type: disc;
+        padding-left: 1.8rem;
+        margin-top: 0.8rem;
+        margin-bottom: 0.5rem;
+        text-align: left;
+    }
+
+    .modal li {
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        font-size: 1.1rem;
+    }
+
+    .modal li::marker {
+        color: #1A1A1A;
+        font-size: 1.1rem;
+    }
+
+    /*testimonioss*/
+
+    .testimonials-wrapper {
+        flex-direction: row;
+        gap: 1rem;
+        max-width: 85%;
+        margin: 2rem auto;
+    }
+
+    .testimonial-column {
+        height: 25rem;
+    }
+
+    .testimonial {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .user {
+        font-size: 1.1rem;
+    }
+
+    .handle {
+        font-size: 1rem;
+    }
+
+    .content {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    /*seccion planes*/
+    .contenedorPlanes {
+        max-width: 80%;
+        margin: 2rem auto;
+        padding: 2rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contenedorPlanesTitulo h3 {
+        font-size: 1.7rem;
+        padding: 0 1rem;
+    }
+
+    .contenedorPlanesTitulo p {
+        font-size: 0.95rem;
+        padding: 0 1rem;
+    }
+
+    .contenedorPromo {
+        font-size: 0.95rem;
+        padding: 0.4rem 1rem 0.4rem 1.8rem;
+    }
+
+    .contenedorPlanBoton {
+        font-size: 1.4rem;
+        padding: 0.6rem 4rem;
+    }
+
+    .contenedorTituloSeccion h2 {
+        font-size: 3.8rem;
+        padding-top: 0rem;
+    }
+
+    /*section general*/
+    section h3 {
+        font-size: 1.1rem;
+    }
+
+    /*FOOTER*/
+    footer {
+        max-width: 100%;
+        margin: 0 auto;
+        /* Centra horizontalmente el bloque */
+        display: flex;
+        flex-direction: column;
+        /* Para que el contenido se apile verticalmente */
+        align-items: center;
+        /* Centra horizontalmente el contenido interno */
+        /*text-align: center;  Alinea el texto al centro */
+        padding: 2rem 1rem;
+    }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 90%;
+        margin: auto;
+    }
+
+    .footer-column {
+        max-width: 100%;
+        flex: none;
+    }
+
+    /* Imagen flovaManual */
+    .contenedorEmoji img {
+        max-width: 15%;
+        /* reduce el ancho máximo para tablets */
+        border-radius: 6px;
+        /* esquinas más suaves */
+    }
+
+
+}
+
+/* =======================
+   RESPONSIVE MÓVILES
+   ======================= */
+@media (max-width: 750px) {
+
+    /* Header */
+    header,
+    .contenedorNav {
+        margin-bottom: 0;
+        padding: 0.4rem 0;
+    }
+
+    .logoFlova img {
+        width: 12rem;
+        margin: -0.4rem;
+    }
+
+    /* section general */
+    section h3 {
+        font-size: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu-desplegado a {
+        font-size: 2.1rem;
+        /* ajustar a pantalla pequeña */
+        letter-spacing: -1px;
+        line-height: 1.2;
+    }
+
+    .menu-toggle {
+        right: 1.5rem;
+        width: 20px;
+        height: 14px;
+    }
+
+    .menu-toggle .bar {
+        height: 2px;
+    }
+
+    .menu-desplegado li {
+        margin: 0.8rem 0;
+        /* menos espacio entre enlaces */
+    }
+
+    .menu-desplegado {
+        transform: translateY(-20%);
+        /* sube 10% desde su posición centrada */
+    }
+
+    /* section Flova */
+    .contenedorTitulo {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .contenedorTitulo h1 {
+        font-size: 3rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contenedorTitulo p {
+        font-size: 0.9rem;
+        max-width: 80%;
+
+    }
+
+    /* Aplica a inputs, botones y enlaces: reduce altura, fuente y ancho si deseas */
+    /* Aplica a inputs, botones y enlaces: reduce altura, fuente y ancho si deseas */
+    .formCorreo {
+        width: 100%;
+        max-width: 60%;
+    }
+
+    .formCorreo input {
+        font-size: 0.8rem;
+        padding: 0.65rem 0.9rem;
+    }
+
+    .formCorreo button {
+        padding: 0.65rem 1rem;
+        font-size: 0.8rem;
+    }
+
+
+    .contenedorImagen img {
+        max-width: 90%;
+        border-radius: 6px;
+    }
+
+    main section {
+        padding: 1rem 1rem;
+    }
+
+    /* section queridoEmprendedor */
+    .contenedorEmprendedor {
+        max-width: 100%;
+    }
+
+    .contenedorEmprendedor p,
+    .contenedorEmprendedor li {
+        font-size: 1.3rem;
+        line-height: 1.1;
+        text-align: left;
+    }
+
+    .contenedorEmprendedor ul {
+        list-style-type: disc !important;
+        /* Fuerza que aparezcan */
+        list-style-position: outside !important;
+        /* Que se muestren a la izquierda */
+        padding-left: 1.5rem;
+        /* Espacio para el punto */
+        line-height: 0;
+    }
+
+    .contenedorEmprendedor li {
+        position: relative;
+        margin-bottom: 0.6rem;
+    }
+
+    /* 🌟 Pseudo-elemento personalizado para asegurar el color */
+    .contenedorEmprendedor li::before {
+        content: "•";
+        /* Crea manualmente la viñeta */
+        color: #005ad6;
+        /* Azul brillante */
+        font-size: 3rem;
+        position: absolute;
+        left: -1.5rem;
+        top: -1rem;
+    }
+
+    /* Quita el marcador nativo (por si acaso) */
+    .contenedorEmprendedor li::marker {
+        content: none;
+    }
+
+    /*section agenda*/
+    #agenda {
+        max-width: 95%;
+        margin: 0rem auto;
+        /* Centra horizontalmente el bloque */
+        display: flex;
+        flex-direction: column;
+        /* Para que el contenido se apile verticalmente */
+        align-items: center;
+        /* Centra horizontalmente el contenido interno */
+        /*text-align: center;  Alinea el texto al centro */
+        padding: 0rem 1rem;
+        padding-bottom: 2rem;
+    }
+
+    .botonAgenda button,
+    .botonAgenda button strong {
+        font-size: 1.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.2rem;
+    }
+
+    #agenda p {
+        font-size: 1rem;
+        line-height: 1.2;
+    }
+
+    /* section servicios */
+    .contenedorServicios {
+        max-width: 100%;
+    }
+
+    .contenedorServicios h2 {
+        font-size: 2.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .contenedorServicios p {
+        font-size: 0.9rem;
+        max-width: 100%;
+    }
+
+    .contenedorTablaServicios {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+
+    .contenedorTablaServicios h3 {
+        font-size: 1rem;
+    }
+
+    .contenedorTablaServicios p {
+        font-size: 0.8rem;
+    }
+
+    .contenedorTablaBotones {
+        font-size: 0.75rem;
+        max-width: 90%;
+    }
+
+    /*video*/
+    .videoIntermedio {
+        max-width: 100%;
+    }
+
+    /* nuestroTrabajo */
+
+    .contenedorTrabajo h2 {
+        max-width: 95%;
+        font-size: 2.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .contenedorTextoEmprendedor {
+        max-width: 100%;
+    }
+
+    .contenedorTextoEmprendedor p {
+        font-size: 1.3rem;
+        line-height: 1.1;
+        text-align: left;
+    }
+
+    /* preguntas frecuentes */
+
+    .contenedorModular {
+        max-width: 100%;
+        font-size: 0.85rem;
+    }
+
+
+    .contenedorTituloSeccion h2 {
+        font-size: 2.6rem;
+    }
+
+    .btn-read-more b {
+        margin-right: 2rem;
+        /* Puedes ajustar el valor según necesites */
+        display: inline-block;
+    }
+
+    /* preguntas frecuentes */
+    #preguntasFrecuentes {
+        padding-top: 2.5rem;
+        padding-bottom: 2rem;
+    }
+
+    .contenedorModular {
+        max-width: 95%;
+        gap: 0.8rem;
+        margin: 0rem auto;
+        margin-top: -1rem;
+        grid-template-columns: 1fr;
+    }
+
+    .btn-read-more {
+        font-size: 1rem;
+        padding: 0.9rem 1rem;
+        padding-right: 3rem;
+        border-radius: 0.5rem;
+        line-height: 1.4;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .btn-read-more b {
+        font-size: 1.1rem;
+        line-height: 1.2;
+    }
+
+    .toggle-icon {
+        font-size: 1.1rem;
+        right: 1rem;
+    }
+
+    .modal-container {
+        margin-top: 0.4rem;
+        border-radius: 0.5rem;
+    }
+
+    .modal {
+        font-size: 0.95rem;
+        padding: 0.8rem;
+        max-height: none;
+        line-height: 1.4;
+    }
+
+    /* Estilo para listas dentro de los modales */
+    .modal ul {
+        list-style-type: disc;
+        /* Viñetas circulares */
+        padding-left: 1.5rem;
+        /* Sangría para alinear las viñetas */
+        margin-top: 0.8rem;
+        margin-bottom: 0.5rem;
+        text-align: left;
+        /* Asegura que el texto no quede centrado */
+    }
+
+    .modal li {
+        margin-bottom: 0.5rem;
+        line-height: 1.5;
+        font-size: 0.95rem;
+        /* texto más legible */
+    }
+
+    /* Opcional: estilo de viñeta personalizado */
+    .modal li::marker {
+        color: #1A1A1A;
+        /* azul moderno */
+        font-size: 1.1rem;
+    }
+
+
+    /* testimonios */
+    .testimonials-wrapper {
+        font-size: 0.75rem;
+        max-width: 90%;
+
+    }
+
+    #rightColumn {
+        display: none;
+    }
+
+    #leftColumn {
+        width: 100%;
+    }
+
+    .btn-read-more {
+        font-size: 0.9rem;
+    }
+
+    .user {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .handle {
+        font-size: 0.9rem;
+        color: #777;
+    }
+
+    .content {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
+    /*Planes*/
+    .contenedorPlanes {
+        max-width: 95%;
+        margin: 1rem auto;
+        padding: 1.5rem;
+        flex-direction: column;
+        text-align: center;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        border-radius: 0.8rem;
+    }
+
+    .overlayPlanes {
+        border-radius: 0.8rem;
+    }
+
+    .contenedorPromo {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.9rem 0.4rem 1.6rem;
+    }
+
+    .contenedorPlanesTitulo h3 {
+        font-size: 1.3rem;
+        line-height: 1.2;
+        padding: 0rem 0rem;
+        margin-bottom: -1rem;
+    }
+
+    .grupoBotones {
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+
+    .contenedorPlanBoton {
+        width: 100%;
+        font-size: 1.2rem;
+        padding: 0.7rem 2rem;
+        border-radius: 0.4rem;
+    }
+
+    /*footer*/
+    footer {
+        max-width: 100%;
+        font-size: 0.85rem;
+        margin: 0 auto;
+        /* Centra horizontalmente el bloque */
+        display: flex;
+        flex-direction: column;
+        /* Para que el contenido se apile verticalmente */
+        align-items: center;
+        /* Centra horizontalmente el contenido interno */
+        /*text-align: center;  Alinea el texto al centro */
+        padding: 2rem 1rem;
+    }
+
+    /* Contenedor de la imagen png */
+
+    /* Imagen flovaManual */
+    .contenedorEmoji img {
+        max-width: 20%;
+        /* reduce el ancho máximo para tablets */
+        border-radius: 4px;
+        /* esquinas más suaves */
+    }
+
+
+    /* 1. TEXTO DE LA SECCIÓN (#servicios)
+
+/* 1. LA SECCIÓN NEGRA (#servicios)
+       -----------------------------------------------------
+       Le damos altura suficiente para cubrir:
+       Video + Tarjeta 1 + Tarjeta 2 + Mitad de Tarjeta 3 */
+    #servicios {
+        padding-bottom: 55rem !important; /* Altura del fondo negro */
+    }
+
+    /* 2. EL CONTENEDOR DE LAS TARJETAS (.servicios-cards-wrapper)
+       -----------------------------------------------------
+       AQUÍ ESTÁ LA SOLUCIÓN:
+       Este elemento es el "padre" de las tarjetas. 
+       Lo jalamos hacia arriba con un margen negativo casi igual al padding.
+       
+       Matemática: -55rem (padding) + 2rem (espacio deseado) = -53rem */
+    .servicios-cards-wrapper {
+        margin-top: -53rem !important; /* ¡Esto sube las tarjetas al área negra! */
+        position: relative;
+        z-index: 20; /* Asegura que queden encima del negro */
+        background: transparent !important;
+    }
+
+    /* 3. EL GRID DE TARJETAS (.contenedorTablaServicios)
+       -----------------------------------------------------
+       Reseteamos su margen porque ya movimos al padre (.servicios-cards-wrapper).
+       Así evitamos conflictos. */
+    .contenedorTablaServicios {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        max-width: 92% !important;
+        margin: 0 auto !important; /* Reseteamos margin-top a 0 */
+        margin-top: 0 !important;  /* Importante: el trabajo sucio lo hace el padre arriba */
+    }
+
+    /* 4. VIDEO
+       -----------------------------------------------------
+       Aseguramos que no tenga márgenes extraños que molesten */
+    #servicios .videoIntermedio {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 20px;
+        margin: 3rem auto 0 auto !important; /* Cero margen abajo, el espacio lo da el cálculo de arriba */
+    }
+
+    /* ESTILOS VISUALES (Se mantienen igual) */
+    .contenedorTablaServicios .tarjeta-servicio,
+    .contenedorTablaServicios div {
+        background: #FFF;
+        padding: 2rem 1.5rem !important;
+        border-radius: 1rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .contenedorTablaServicios h3 {
+        font-size: 1.5rem !important;
+        font-weight: 800 !important;
+        margin-bottom: 1rem !important;
+        text-align: center !important;
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+    }
+
+    .contenedorTablaServicios p {
+        font-size: 1.1rem !important;
+        line-height: 1.5 !important;
+        color: #444 !important;
+        text-align: left;
+    }
+
+    /* Header textos */
+    #servicios .contenedorServicios {
+        max-width: 92% !important;
+        padding: 0 !important;
+        margin: 0 auto;
+        text-align: left;
+    }
+    #servicios .contenedorServicios h2 {
+        font-size: 2.8rem !important;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        text-align: center !important;
+    }
+    #servicios .contenedorServicios p {
+        font-size: 1.35rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1.2rem;
+        color: #f0f0f0;
+        width: 100%;
+    }
+}
+
+
+/* ================================================================ */
+/* ==  INICIO BLOQUE MODIFICADO: (MÁS ALTO Y ÁNGULO SUAVE)   == */
+/* ================================================================ */
+
+/* 1. SECCIÓN PRINCIPAL (CONTENEDOR) */
+#servicios {
+    position: relative;
+    background: transparent;
+    /* Fondo transparente para ver el ::before */
+
+    /* === 👇 UN POCO MÁS ALTO === */
+    padding-top: 280px;
+    /* Antes era 250px */
+    padding-bottom: 240px;
+    /* Antes era 210px */
+    /* === 👆 UN POCO MÁS ALTO === */
+
+    /* Arreglo de animación: Fuerza la visibilidad */
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto;
+
+    overflow: hidden;
+}
+
+/* 2. EL FONDO NEGRO INCLINADO (PSEUDO-ELEMENTO) */
+#servicios::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+
+    /* ===  ÁNGULO SUAVE (SIN CAMBIOS) === */
+    clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
+    /* === ÁNGULO SUAVE (SIN CAMBIOS) === */
+
+    z-index: -1;
+}
+
+/* 3. CONTENIDO (TEXTO, VIDEO, CUADROS) */
+#servicios .contenedorServicios,
+#servicios .videoIntermedio,
+#servicios .contenedorTablaServicios,
+#servicios .contenedorTablaBotones,
+#servicios .contenedorLlamada {
+    position: relative;
+    z-index: 1;
+}
+
+/* 4. TEXTOS (SOBRE FONDO NEGRO) */
+#servicios .contenedorServicios h2 {
+    color: #fff;
+}
+
+#servicios .contenedorServicios h2 .resaltado-azul {
+    color: #0070f3;
+}
+
+#servicios .contenedorServicios p {
+    color: #f0f0f0;
+}
+
+#servicios .contenedorServicios u em {
+    color: #00BFFF;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: bold;
+}
+
+/* 5. CONTENEDOR DE CUADROS: (4 COLUMNAS) */
+#servicios .contenedorTablaServicios {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 90%;
+    margin-top: 4rem;
+}
+
+/* 5b. CUADROS (individuales) */
+#servicios .contenedorTablaServicios div {
+    background: #ffffff;
+    color: #333;
+    border: none;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    border-radius: 25px;
+    padding: 2rem;
+}
+
+/* 6. TÍTULOS DE CUADROS */
+#servicios .contenedorTablaServicios h3 {
+    color: #0070f3;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#servicios .contenedorTablaServicios h3 i {
+    display: none;
+}
+
+/* 7. PÁRRAFOS DE CUADROS */
+#servicios .contenedorTablaServicios p {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* 8. BOTONES-ETIQUETA */
+#servicios .contenedorTablaBotones div {
+    background: #333;
+    color: #f0f0f0;
+    border: 1px solid #555;
+    box-shadow: none;
+}
+
+#servicios .contenedorTablaBotones div:hover {
+    background: #555;
+}
+
+/* 9. RESPONSIVE: (TAMBIÉN AJUSTADO) */
+@media (max-width: 1024px) {
+    #servicios {
+        /* ===  UN POCO MÁS ALTO (TABLET) === */
+        padding-top: 220px;
+        /* Antes 200px */
+        padding-bottom: 180px;
+        /* Antes 160px */
+    }
+
+    #servicios::before {
+        /* Ángulo suave para tablet (SIN CAMBIOS) */
+        clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
+    }
+
+    #servicios .contenedorTablaServicios {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 90%;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 750px) {
+    #servicios {
+        /* ===  UN POCO MÁS ALTO (MÓVIL) === */
+        padding-top: 170px;
+        /* Antes 150px */
+        padding-bottom: 130px;
+        /* Antes 110px */
+    }
+
+    #servicios::before {
+        /* Ángulo más suave para móvil (SIN CAMBIOS) */
+        clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
+    }
+
+    #servicios .contenedorTablaServicios {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        /* Asegura un espacio vertical entre tarjetas */
+        max-width: 95%;
+        /* Para que se alinee con otros elementos móviles */
+    }
+
+    /* Ajustes para tarjetas en móvil */
+    #servicios .contenedorTablaServicios div {
+        padding: 1.5rem;
+    }
+
+    #servicios .contenedorTablaServicios h3 {
+        font-size: 1.25rem;
+    }
+
+    #servicios .contenedorTablaServicios p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ================================================================ */
+/* ==  FIN BLOQUE MODIFICADO                                    == */
+/* ================================================================ */
+
+/* --- INICIO: Estilos para Flechas --- */
+
+/* 1. Contenedor del texto (el propio párrafo) */
+.texto-con-flecha {
+    position: relative;
+    /* Clave para posicionar la flecha */
+    /* Esto hace que el párrafo sea el "ancla" para la flecha */
+}
+
+/* 2. Estilo base de todas las flechas */
+.flecha {
+    position: absolute;
+    /* Saca la flecha del flujo normal del documento */
+    width: 150px;
+    /* Ancho de la flecha (ajusta si es necesario) */
+    height: auto;
+    z-index: 10;
+
+    /* Esto centra verticalmente la flecha respecto al párrafo */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* 3. Flecha específica (la que apunta a "Dinero fuera") */
+.flecha-izq {
+    left: 47%;
+    /* La pega al borde DERECHO del párrafo */
+    margin-left: 1rem;
+    /* Le da un pequeño espacio */
+}
+
+/* 4. Flecha específica (la que apunta a "VENDER") */
+.flecha-arriba {
+    right: 100%;
+    /* La pega al borde IZQUIERDO del párrafo */
+    margin-right: 1rem;
+    /* Le da un pequeño espacio */
+    top: 180%;
+}
+
+/* 5. REQUERIMIENTO: Ocultar en tablets y móviles */
+/* Tu CSS ya usa 1024px como breakpoint para tablets.
+   Esta regla ocultará las flechas en cualquier pantalla 
+   de 1024px de ancho o menos.
+*/
+@media (max-width: 1024px) {
+    .flecha {
+        display: none;
+    }
+}
+
+/* --- FIN: Estilos para Flechas --- */
+
+/* 🔹 Ocultar en escritorio y tablet */
+.oculto {
+    display: none;
+}
+
+/* 🔹 Mostrar y estilizar en móviles */
+@media (max-width: 750px) {
+    .oculto {
+        display: block;
+        /* Lo hace visible */
+        text-align: center;
+        /* Centra el texto */
+        color: #9e9e9e;
+        /* Texto gris */
+        margin: 0;
+        /* Sin márgenes */
+        padding: 0;
+        /* Sin padding */
+        font-size: 0.7rem;
+    }
+}

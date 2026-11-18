@@ -1,0 +1,18 @@
+# robots.txt — flovamedia.com
+# Todo el sitio es rastreable, incluidos buscadores de IA (ChatGPT, Perplexity,
+# Claude, Gemini). Solo se bloquean archivos internos.
+#
+# Nota: /es/ y /en/ ya NO se bloquean. Son URLs viejas que redirigen (301) a la
+# página principal; si se bloquean, Google no puede ver la redirección y las
+# sigue mostrando en resultados.
+
+User-agent: *
+Disallow: /includes/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /config.php
+Disallow: /db.php
+Disallow: /submit.php
+Disallow: /blog/_articulos.php
+
+Sitemap: https://flovamedia.com/sitemap.xml

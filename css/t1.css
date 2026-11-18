@@ -1,0 +1,1109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #1A1A1A;
+    background: #F9FAFB;
+    overflow-x: hidden;
+     user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: antialiased;
+}
+
+@keyframes scrollTestimonials {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+header.barraNegra {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    background-color: #000;
+    padding: 1 rem 0;
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    align-items: center;
+    height: auto;
+}
+
+header.barraNegra.headerOculto {
+    transform: translateY(-100%);
+}
+
+.navCentro {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%
+}
+
+.logoFlova img {
+    height: 2.2rem;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+    display: block;
+    margin: 0.5rem 0;
+}
+
+.logoFlova img:hover {
+    transform: scale(1.1);
+}
+
+.movil {
+    display: none;
+}
+
+#flova {
+    text-align: center;
+    padding-top: 6rem;
+    margin-bottom: 0;
+}
+
+.contenedorTitulo {
+    max-width: 75%;
+    margin: 0 auto;
+}
+
+.contenedorTitulo h1 {
+    font-size: 7.5rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.09em;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.contenedorTitulo p {
+    font-size: 1.7rem;
+    margin: 0 auto 2rem;
+    color: #3d3d3d;
+    line-height: 1.5;
+    max-width: 70%;
+}
+
+#testimonios {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: #F9FAFB;
+    position: relative;
+}
+
+.testimonios-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    max-width: 70%;
+}
+
+.testimonios-scroller {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    padding: 1rem 0;
+    animation: scrollTestimonials 40s linear infinite;
+}
+
+.testimonial {
+    background-color: white;
+    border-radius: 25px !important;
+    padding: 20px;
+    min-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    font-weight: 300;
+}
+
+.user {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #005ad6;
+}
+
+.handle {
+    color: #657786;
+    font-size: 0.9em;
+}
+
+.content {
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+.testimonios-container::before,
+.testimonios-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.testimonios-container::before {
+    left: 0;
+    background: linear-gradient(90deg, rgba(249,250,251,1) 0%, rgba(249,250,251,0) 100%);
+}
+
+.testimonios-container::after {
+    right: 0;
+    background: linear-gradient(90deg, rgba(249,250,251,0) 0%, rgba(249,250,251,1) 100%);
+}
+
+@keyframes scrollTestimonials {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-300px * 3 - 2rem * 3)); }
+}
+
+@media (max-width: 1200px) {
+    .testimonios-container {
+        max-width: 60%;
+    }
+}
+
+@media (max-width: 992px) {
+    .testimonios-container {
+        max-width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonios-container {
+        max-width: 80%;
+    }
+
+    .testimonios-container::before,
+    .testimonios-container::after {
+        width: 50px;
+    }
+
+    .testimonial {
+        min-width: 280px;
+    }
+
+    @keyframes scrollTestimonials {
+        100% { transform: translateX(calc(-280px * 3 - 2rem * 3)); }
+    }
+}
+
+@media (max-width: 576px) {
+    .testimonios-container {
+        max-width: 90%;
+    }
+
+    .testimonios-container::before,
+    .testimonios-container::after {
+        width: 30px;
+    }
+
+    .testimonial {
+        min-width: 250px;
+    }
+
+    @keyframes scrollTestimonials {
+        100% { transform: translateX(calc(-250px * 3 - 2rem * 3)); }
+    }
+}
+
+@media (max-width: 1024px) {
+    .testimonios-container {
+        max-width: 70%;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonios-container {
+        max-width: 80%;
+    }
+
+    .testimonios-container::before,
+    .testimonios-container::after {
+        width: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonios-container {
+        max-width: 90%;
+    }
+
+    .testimonios-container::before,
+    .testimonios-container::after {
+        width: 30px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .testimonial {
+        width: 280px;
+        height: 196px;
+        padding: 1.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial {
+        width: 240px;
+        height: 168px;
+        padding: 1.2rem;
+    }
+
+    .content {
+        -webkit-line-clamp: 4;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial {
+        width: 200px;
+        height: 140px;
+        padding: 1rem;
+    }
+
+    .movil {
+        display: block;
+    }
+
+    .content {
+        font-size: 0.7rem;
+        -webkit-line-clamp: 3;
+    }
+
+    .contenedorPlanes {
+        max-width: 100%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .contenedorPromo {
+        font-size: 1.1rem;
+    }
+
+    .contenedorPlanesTitulo h3 {
+        font-size: 1.2rem;
+    }
+
+    .contenedorPlanesTitulo p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .contenedorPlanBoton {
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+}
+
+.testimonial {
+    box-shadow: none;
+    border-radius: 0;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    #testimonios {
+        padding: 3rem 1rem;
+        max-width: 100%;
+    }
+
+    .contenedorTituloSeccion h2 {
+        font-size: 2rem;
+    }
+
+    .testimonial {
+        width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonial {
+        width: 250px;
+        padding-left: 0.8rem;
+    }
+
+    .user, .content {
+        font-size: 0.9rem;
+    }
+}
+
+.contenedorPlanes {
+    position: relative;
+    background-image: url('/img/cta.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 1rem;
+    max-width: 70%;
+    margin: 2rem auto;
+    padding: 2rem 4rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 5rem;
+}
+.overlayPlanes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    border-radius: 1rem;
+}
+
+.contenidoPlanes {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.contenedorPromo {
+    background-color: rgba(255, 254, 254, 0.2);
+    color: #fff;
+    padding: 0.4rem 1rem 0.4rem 2rem;
+    text-align: center;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    font-weight: 550;
+    width: fit-content;
+    margin-left: 0;
+    position: relative;
+}
+
+.contenedorPromo::before {
+    content: '';
+    position: absolute;
+    left: 0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.8rem;
+    height: 0.8rem;
+    background-color: #ff3c00;
+    border-radius: 50%;
+    box-shadow: 0 0 8px 2px #ff3c00;
+}
+
+.contenedorPlanesTitulo h3 {
+    font-size: 1.85rem;
+    color: #FFF;
+    margin-bottom: 0rem;
+    font-weight: 550;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.contenedorPlanesTitulo p {
+    font-size: 1rem;
+    margin-bottom: 0rem;
+    font-weight: 550;
+    text-align: center;
+    color: #CCC;
+}
+
+.grupoBotones {
+    margin-top: 0rem;
+}
+
+.contenedorPlanBoton {
+    display: inline-block;
+    justify-content: center;
+    margin: 0.5rem 0.5rem 0 0;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.7rem;
+    font-weight: 700;
+    background-color: #005bb5;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.contenedorPlanBoton:hover {
+    background: #0070f3;
+    transition: background 0.3s ease;
+}
+
+.cierrePagina {
+    background: #000;
+    color: #ccc;
+    padding: 5rem 1rem;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    margin-top: 4rem;
+}
+
+.footer-container {
+    max-width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    justify-content: space-between;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex: 1 1 200px;
+}
+
+.logo {
+    max-width: 150px;
+    height: auto;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons i {
+    font-size: 1.5rem;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.social-icons i:hover {
+    color: #0070f3;
+}
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.language-selector img {
+    width: 24px;
+    height: auto;
+}
+
+.language-selector select {
+    background: transparent;
+    color: #ccc;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+}
+
+.footer-column h4 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 0rem;
+    line-height: 1;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+}
+
+.footer-column li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-column a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #0070f3;
+}
+
+.call-to-action p {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.call-to-action span {
+    margin-top: -2.5rem;
+    margin-bottom: -1rem;
+}
+
+.cta-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.cta-form input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background: #222;
+    color: #fff;
+}
+
+.cta-form button {
+    padding: 0.5rem 1rem;
+    background: #0070f3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.cta-form button:hover {
+    background: #005bb5;
+}
+
+.footer-bottom {
+    margin-top: 3rem;
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #FFFF;
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.footer-bottom a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+    color: #0070f3;
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+    .contenedorTitulo h1 {
+        font-size: 6.5rem;
+    }
+
+    .testimonial {
+        width: 380px;
+        height: 260px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    section {
+        padding: 3rem 2rem;
+    }
+
+    .contenedorTitulo h1 {
+        font-size: 5rem;
+    }
+
+    .contenedorTitulo p {
+        font-size: 1.4rem;
+    }
+
+    .contenedorTituloSeccion h2 {
+        font-size: 4rem;
+    }
+
+    .testimonial {
+        width: 340px;
+        height: 240px;
+        padding: 1.5rem;
+    }
+
+    .contenedorPlanes {
+    margin: 2rem auto 4rem;
+}
+
+    .contenedorPlanesTitulo h3 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 3rem 1.5rem;
+    }
+
+    .contenedorTitulo h1 {
+        font-size: 3.5rem;
+    }
+
+    .contenedorTitulo p {
+        font-size: 1.2rem;
+        max-width: 85%;
+    }
+
+    .contenedorTituloSeccion h2 {
+        font-size: 3rem;
+    }
+
+    .testimonial {
+        width: 300px;
+        height: 220px;
+        padding: 1.25rem;
+    }
+
+    .contenedorPlanes {
+        max-width: 100%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .contenedorPromo {
+        font-size: 1.1rem;
+    }
+
+    .contenedorPlanesTitulo h3 {
+        font-size: 1.2rem;
+    }
+
+    .contenedorPlanesTitulo p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .contenedorPlanBoton {
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+
+    .footer-container {
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 2.5rem 1rem;
+    }
+
+    .contenedorTitulo h1 {
+        font-size: 2.8rem;
+    }
+
+    .contenedorTitulo p {
+        font-size: 1.05rem;
+        max-width: 95%;
+    }
+
+    .contenedorTituloSeccion h2 {
+        font-size: 2.4rem;
+    }
+
+    .testimonial {
+        width: 280px;
+        height: 200px;
+        padding: 1rem;
+    }
+
+    .contenedorPlanes {
+        max-width: 100%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .contenedorPromo {
+        font-size: 1.1rem;
+    }
+
+    .contenedorPlanesTitulo h3 {
+        font-size: 1.2rem;
+    }
+
+    .contenedorPlanesTitulo p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .contenedorPlanBoton {
+        font-size: 1.2rem;
+        line-height: 1.5;
+    }
+
+    .footer-column {
+        flex: 1 1 100%;
+    }
+}
+
+#contacto.formularioFlova {
+    padding: 5rem 1rem;
+    background: #F9FAFB;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contenidoFormulario {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.formularioFlova h2 {
+    font-size: 2.5rem;
+    color: #1A1A1A;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.subtituloFormulario {
+    color: #3d3d3d;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    display: block;
+}
+
+.formularioMinimalista {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.grupoHorizontal {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.campoSimple {
+    position: relative;
+    flex: 1;
+}
+
+.campoSimple label {
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: #F9FAFB;
+    padding: 0 5px;
+    font-size: 0.85rem;
+    color: #3d3d3d;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.labelSelect {
+    top: -10px !important;
+    left: 12px !important;
+    background: #F9FAFB !important;
+    padding: 0 5px !important;
+}
+
+.campoSimple input,
+.campoSimple select,
+.campoSimple textarea {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.campoSimple input:focus,
+.campoSimple select:focus,
+.campoSimple textarea:focus {
+    border-color: #005bb5;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 91, 181, 0.1);
+}
+
+.campoSimple textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.botonFlova {
+    background-color: #005bb5;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.botonFlova:hover {
+    background: #0070f3;
+}
+
+@media (max-width: 768px) {
+    .formularioFlova h2 {
+        font-size: 2rem;
+    }
+
+    .subtituloFormulario {
+        font-size: 1rem;
+    }
+
+    .grupoHorizontal {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #contacto.formularioFlova {
+        padding: 3rem 1rem;
+    }
+
+    .formularioFlova h2 {
+        font-size: 1.8rem;
+    }
+
+    .formularioMinimalista {
+        gap: 2.5rem;
+    }
+}
+
+.campoSimple select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23005bb5' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+}
+
+@media (min-width: 2560px) {
+    section {
+        max-width: 1800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .logoFlova img {
+        height: 3rem;
+    }
+
+    #flova {
+        padding-top: 8rem;
+    }
+
+    .contenedorTitulo {
+        max-width: 65%;
+    }
+
+    .contenedorTitulo h1 {
+        font-size: 9rem;
+        letter-spacing: -0.09em;
+    }
+
+    .contenedorTitulo p {
+        font-size: 2.2rem;
+        max-width: 75%;
+        line-height: 1.6;
+    }
+
+    #contacto.formularioFlova {
+        padding: 6rem 2rem;
+    }
+
+    .contenidoFormulario {
+        max-width: 1000px;
+    }
+
+    .formularioFlova h2 {
+        font-size: 3.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .subtituloFormulario {
+        font-size: 1.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .formularioMinimalista {
+        gap: 2.5rem;
+    }
+
+    .grupoHorizontal {
+        gap: 2rem;
+    }
+
+    .campoSimple input,
+    .campoSimple select,
+    .campoSimple textarea {
+        padding: 1.3rem;
+        font-size: 1.15rem;
+        border-radius: 10px;
+    }
+
+    .campoSimple label {
+        font-size: 1rem;
+    }
+
+    .campoSimple textarea {
+        min-height: 150px;
+    }
+
+    .botonFlova {
+        padding: 1.3rem 2.5rem;
+        font-size: 1.7rem;
+        border-radius: 10px;
+        margin-top: 2rem;
+    }
+}
+
+@media (min-width: 2560px) {
+    .testimonials-wrapper {
+        max-width: 75rem;
+    }
+
+    .testimonial-column {
+        height: 650px;
+    }
+
+    .testimonial {
+        font-size: 1.3rem;
+        padding: 2rem;
+    }
+
+    .user {
+        font-size: 1.4rem;
+    }
+
+    .handle {
+        font-size: 1.2rem;
+    }
+
+    .content {
+        font-size: 1.3rem;
+        line-height: 1.4;
+    }
+
+    .contenedorModular {
+        max-width: 75rem;
+    }
+
+    .btn-read-more {
+        font-size: 1.7rem;
+        padding: 1.4rem 3rem;
+    }
+
+    .modal {
+        font-size: 1.4rem;
+    }
+
+    .contenedorPlanes {
+        max-width: 75rem;
+        padding: 3rem 6rem;
+    }
+
+    .contenedorPlanesTitulo h3 {
+        font-size: 2.8rem;
+    }
+
+    .contenedorPlanesTitulo p {
+        font-size: 1.2rem;
+    }
+
+    .contenedorPlanBoton {
+        font-size: 2.2rem;
+        padding: 0.9rem 7rem;
+    }
+
+    footer {
+        max-width: none;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+    }
+
+    .footer-container {
+        max-width: 75rem;
+        gap: 6rem;
+    }
+
+    .footer-column h4 {
+        font-size: 1.4rem;
+    }
+
+    .footer-column a {
+        font-size: 1.1rem;
+    }
+
+    .footer-bottom p {
+        font-size: 1rem;
+    }
+
+    .footer-bottom {
+        margin-top: 3rem;
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #FFFF;
+        max-width: 65rem;
+        margin: 3rem auto;
+    }
+}
+
+@media (min-width: 2560px) {
+    body {
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
+    }
+}

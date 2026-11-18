@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+    <!--
+  Normalmente quien abre el código fuente es un programador.
+  Si eres dueño de un negocio y llegaste hasta aquí, ya entendiste algo:
+  un buen sitio no solo se ve bien, está construido para vender.
+  Hablemos → https://flovamedia.com
+-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flova Media - Página no encontrada</title>
+    <meta name="description"
+      content="Flova Media - Página no encontrada. Te ayudamos a que nadie pierda lo que ofreces.">
+    <link rel="icon" href="/img/1.png" type="image/png" />
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #1A1A1A;
+      user-select: none;
+    }
+
+    /* BARRA NEGRA PEGADA ARRIBA */
+header.barraNegra {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    background-color: #000;
+    /* barra negra */
+    margin-top: 0 !important;
+    padding: 0.5rem 0;
+    animation: fadeInDown 0.8s ease forwards;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Alinea el contenido centrado horizontalmente */
+.navCentro {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Logo centrado */
+.logoFlova {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoFlova img {
+    height: 2.2rem;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.logoFlova img:hover {
+    transform: scale(1.1);
+}
+
+/* Contenedor del nav general */
+.contenedorNav {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Estructura tipo píldora eliminada */
+.navegador {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+/* Oculta el header cuando se hace scroll hacia abajo */
+.headerOculto {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+    .not-found-section {
+      text-align: center;
+      padding: 100px 20px;
+      background-color: #f2f2f2;
+    }
+    .not-found-section h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+    .not-found-section h1 span {
+      font-size: 5rem;
+    }
+    .emoji-icon {
+      width: 1.2em;
+      height: 1.2em;
+      vertical-align: middle;
+      margin-left: 0.25em;
+    }
+    .not-found-section p {
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      color: #333;
+    }
+    .return-button {
+      display: inline-block;
+      background-color: #246aff;
+      color: white;
+      font-weight: 700;
+      padding: 22px 48px;
+      font-size: 2.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .return-button:hover {
+      background-color: #1e56cc;
+    }
+    .lang-es, .lang-en { display: none; }
+    footer {
+      background: #000;
+      color: #ccc;
+      padding: 5rem 1rem;
+      border-top-left-radius: 1.5rem;
+      border-top-right-radius: 1.5rem;
+    }
+    .footer-container {
+      max-width: 90%;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4rem;
+      justify-content: space-between;
+    }
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      flex: 1 1 300px;
+    }
+    .logo { max-width: 150px; height: auto; }
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+    }
+    .social-icons i {
+      font-size: 1.5rem;
+      color: #ccc;
+      transition: color 0.3s ease;
+    }
+    .social-icons i:hover {
+      color: #0070f3;
+    }
+    .language-selector {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .language-selector select {
+      background: transparent;
+      color: #ccc;
+      border: 1px solid #555;
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+    }
+    .footer-column h4 {
+      color: #fff;
+      font-size: 1.2rem;
+    }
+    .footer-column ul { list-style: none; }
+    .footer-column li { margin-bottom: 0.75rem; }
+    .footer-column a {
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-column a:hover { color: #0070f3; }
+    .call-to-action p {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+    .call-to-action span {
+      margin-top: 0rem;
+      margin-bottom: 0rem;
+    }
+    .cta-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .cta-form input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #555;
+      border-radius: 4px;
+      background: #222;
+      color: #fff;
+    }
+    .cta-form button {
+      padding: 0.5rem 1rem;
+      background: #0070f3;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .cta-form button:hover { background: #005bb5; }
+    .footer-bottom {
+      margin-top: 3rem;
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #fff;
+    }
+    .footer-bottom a {
+      color: #ccc;
+      text-decoration: none;
+    }
+    .footer-bottom a:hover {
+      color: #0070f3;
+    }
+    @media (max-width: 768px) {
+      .not-found-section h1 { font-size: 2rem; }
+      .not-found-section p { font-size: 1rem; }
+      .return-button { font-size: 1rem; padding: 12px 24px; }
+    }
+  </style>
+  </head>
+
+  <body>
+    <header class="barraNegra">
+      <div class="contenedorNav">
+        <nav class="navegador">
+          <div class="navCentro">
+            <a href="/" class="logoFlova">
+              <img src="/img/logob.png" alt="Logo FLOVA">
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="not-found-section">
+      <div class="container">
+        <!-- Español -->
+        <div class="lang-es">
+          <h1>MMM... ¿Qué buscas? <img src="/img/agenda/3.png" alt="emoji confundido" class="emoji-icon"></h1>
+          <p>
+            Esta página no existe... <strong>al igual que la paciencia de tus
+              clientes cuando no te encuentran.</strong><br>
+            ¡Es hora de que tu presencia online sea implacable!<br><br>
+            Te ayudamos a que nadie se pierda de lo que ofreces.
+          </p>
+          <a href="/" class="return-button">PÁGINA PRINCIPAL</a>
+        </div>
+
+        <!-- Inglés -->
+        <div class="lang-en">
+          <h1>uhm... Wrong page buddy. <img src="/img/principal/emoji.png"
+              alt="emoji confundido" class="emoji-icon"></h1>
+          <p>
+            This page doesn't exist... <strong>just like your customers'
+              patience when they can't find you.</strong><br>
+            It's time to make your online presence flawless!<br><br>
+            We'll help you make sure no one misses out on what you have to
+            offer.
+          </p>
+          <a href="/" class="return-button">RETURN TO HOMEPAGE</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER Español -->
+    <footer class="cierrePagina lang-es">
+      <div class="footer-container">
+        <div class="footer-column">
+          <img src="/img/logob.png" alt="Flova Media Logo" class="logo" />
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61572633061981"
+              target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/flova.media/" target="_blank"><i
+                class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/flovamedia/"
+              target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/tu_canal" target="_blank"><i
+                class="fab fa-youtube"></i></a>
+          </div>
+          <div class="language-selector">
+            <select id="languageSelect">
+              <option value="es" selected>ESPAÑOL</option>
+              <option value="en">INGLÉS</option>
+            </select>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="sobre-nosotros">Sobre nosotros</a></li>
+            <li><a href="/contactoform">Contáctanos</a></li>
+            <li><a href="/blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="/facebook">Facebook Ads</a></li>
+            <li><a href="/google-ads">Google Ads</a></li>
+            <li>Optimización del embudo de ventas</li>
+            <li><a href="/paginas-de-aterrizaje">Páginas de aterrizaje</a></li>
+            <li>Diseño web</li>
+          </ul>
+        </div>
+        <div class="footer-column call-to-action">
+          <p>¿Quieres vender más?</p>
+          <span>Recibe estrategias de marketing cada semana directamente a tu
+            correo. Sólo introduce tu correo aquí.</span>
+          <form class="cta-form">
+            <input type="text" placeholder="¡Obtén crecimiento y escala AHORA!">
+            <button>¡Aquí!</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright © 2025 Flova Media Todos los derechos reservados.<br>
+          <a href="terminos-de-uso">Condiciones de uso</a> |
+          <a href="politicas-de-privacidad">Política de privacidad</a></p>
+      </div>
+    </footer>
+
+    <!-- FOOTER Inglés -->
+    <footer class="cierrePagina lang-en">
+      <div class="footer-container">
+        <div class="footer-column">
+          <img src="/img/logob.png" alt="Flova Media Logo" class="logo" />
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61572633061981"
+              target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/flova.media/" target="_blank"><i
+                class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/flovamedia/"
+              target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/@FlovaMedia" target="_blank"><i
+                class="fab fa-youtube"></i></a>
+          </div>
+          <div class="language-selector">
+            <select id="languageSelect">
+              <option value="en" selected>ENGLISH</option>
+              <option value="es">SPANISH</option>
+            </select>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="sobre-nosotros">About Us</a></li>
+            <li><a href="/contactoform">Contact Us</a></li>
+            <li><a href="/blog/">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/facebook">Facebook Ads</a></li>
+            <li><a href="/google-ads">Google Ads</a></li>
+            <li>Sales Funnel Optimization</li>
+           <li><a href="/paginas-de-aterrizaje">Landing Pages</a></li>
+            <li> Web Design </li>
+          </ul>
+        </div>
+        <div class="footer-column call-to-action">
+          <p>Want to sell more?</p>
+          <span>Get marketing strategies every week right sent into your inbox.
+            Just enter your email here.</span>
+          <form class="cta-form">
+            <input type="text" placeholder="Get growth and scale NOW!">
+            <button>Here!</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright © 2026 Flova Media All rights reserved.<br>
+          <a href="terminos-de-uso">Terms of Use</a> |
+          <a href="politicas-de-privacidad">Privacy Policy</a></p>
+      </div>
+    </footer>
+
+    <script>
+    const isEnglish = (document.referrer + location.pathname).includes('/en/');
+    document.querySelectorAll('.lang-es').forEach(el => el.style.display = isEnglish ? 'none' : 'block');
+    document.querySelectorAll('.lang-en').forEach(el => el.style.display = isEnglish ? 'block' : 'none');
+  </script>
+  </body>
+</html>
